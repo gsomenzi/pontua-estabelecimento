@@ -1,0 +1,17 @@
+.page-loader {
+    display: block;
+    position: absolute;
+}
+
+.page-loader-image {
+    animation: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: 100;
+    animation-delay: 250ms;
+    width: 3rem;
+    height: 3rem;
+}
+
+.page-loader-image img {
+    max-height: 100%;
+}

@@ -1,0 +1,40 @@
+.vertical-steps-wrapper {
+}
+
+.vertical-steps-step {
+}
+
+// TITLE
+
+.vertical-steps-wrapper-title {
+}
+
+.vertical-steps-title-badge {
+    background-color: #aaaaaa;
+    display: inline-block;
+    color: #ffffff;
+    width: 22px !important;
+    height: 22px !important;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+}
+.vertical-steps-title-badge.active {
+    background-color: var(--primary);
+}
+
+.vertical-steps-title-text {
+    padding-left: 0.5rem;
+}
+
+// BODY
+
+.vertical-steps-body {
+    border-left: 1px solid #dddddd;
+    padding-left: 1.5rem;
+    margin-left: 10px;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css');
+
+$primary: #57359d;
+$secondary: #f53f6f;
+$danger: #ff4136;
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$font-size-base: 16px;
+$font-size-base: 0.875rem;
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+// COMPONENTS
+
+@import './styles/components/Drawer.scss';
+@import './styles/components/Dropzone.scss';
+@import './styles/components/EstablishmentPreview.scss';
+@import './styles/components/BackgroundImage.scss';
+@import './styles/components/PageContainer.scss';
+@import './styles/components/PageLoader.scss';
+@import './styles/components/Sidebar.scss';
+@import './styles/components/StatisticCard.scss';
+@import './styles/components/VerticalSteps.scss';
+
+// GLOBAL
+
+a {
+    color: inherit;
+}
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar-large {
+    position: relative;
+    margin: 0 auto;
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-nowrap {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text-right {
+    text-align: right;
+}
+
+th.compact,
+td.compact {
+    width: 1px;
+    white-space: nowrap;
+}
+
+tr.align-middle td,
+tr.align-middle th {
+    vertical-align: middle !important;
+}
+
+.tab-images-slot-label {
+    position: absolute;
+    top: 1rem;
+    right: 0rem;
+}
+
+.tab-images-profile-label {
+    padding: 0.25rem 0.5rem;
+    background-color: var(--primary);
+    color: #ffffff;
+    border-radius: 4px 0 0 4px;
+    margin-bottom: 4px;
+}
+
+.tab-images-cover-label {
+    padding: 0.25rem 0.5rem;
+    background-color: var(--secondary);
+    color: #ffffff;
+    border-radius: 4px 0 0 4px;
+    margin-bottom: 4px;
+}
