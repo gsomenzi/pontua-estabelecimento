@@ -46,7 +46,9 @@ const initialState: UserState = {
 export const getAll = createAsyncThunk('user/getAll', async (payload: undefined, thunkAPI: any) => {
     try {
         const { pagination, order, filters } = thunkAPI.getState().user;
+        console.log(pagination, order, filters);
         const { data } = await UserService.getAll(pagination.page, pagination.qty, order, filters);
+        console.log(data);
         return data;
     } catch (e) {
         return thunkAPI.rejectWithValue(e.response && e.response.data ? e.response.data : e);

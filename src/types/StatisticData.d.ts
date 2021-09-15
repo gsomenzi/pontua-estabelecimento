@@ -11,6 +11,10 @@ interface StatisticData {
         hoje: number;
         total: number;
     };
+    pontos: {
+        hoje: number;
+        total: number;
+    };
     produtos: {
         ativos: number;
     };
@@ -24,7 +28,7 @@ interface StatisticData {
     };
     historicoMensal: {
         data: string;
-        estabelecimentos: number;
+        resgates_produtos: number;
         pontos: number;
         produtos: number;
         usuarios: number;

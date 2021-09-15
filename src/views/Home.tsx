@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, CardHeader, CardTitle, CardBody, Spinner, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
+import {
+    Card,
+    CardHeader,
+    CardTitle,
+    CardBody,
+    Spinner,
+    Nav,
+    NavItem,
+    NavLink,
+    TabContent,
+    TabPane,
+    Col,
+    Row,
+} from 'reactstrap';
 import BreadCrumbs from '../components/atoms/BreadCrumbs';
 import PageContainer from '../components/atoms/PageContainer';
 import HistoryChart from '../components/organisms/Statistic/HistoryChart';
@@ -16,6 +29,7 @@ import LessScoresEstablishmentsTable from '../components/organisms/Statistic/Les
 import { RootState } from '../store';
 import { getAll } from '../store/slices/statistic';
 import { getAll as getUsers, setPage, setQty, setOrder } from '../store/slices/user';
+import StatisticCard from '../components/molecules/StatisticCard';
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -43,6 +57,47 @@ export default function Home() {
                 {loading ? <Spinner color="secondary" /> : null}
             </div>
             <hr className="mt-0" />
+            {/* CARDS */}
+            <div className="py-1">
+                <Row>
+                    <Col lg={3} md={6} sm={6} xs={6}>
+                        <StatisticCard
+                            title="Pontos"
+                            iconName="hand-index"
+                            color="primary"
+                            value={`${data?.pontos?.total}`}
+                            extra={`+${data?.pontos?.hoje} hoje`}
+                        />
+                    </Col>
+                    <Col lg={3} md={6} sm={6} xs={6}>
+                        <StatisticCard
+                            title="Pontuações"
+                            iconName="bar-chart"
+                            color="secondary"
+                            value={`${data?.pontuacoes?.total}`}
+                            extra={`+${data?.pontuacoes?.hoje} hoje`}
+                        />
+                    </Col>
+                    <Col lg={3} md={6} sm={6} xs={6}>
+                        <StatisticCard
+                            title="Resg. prêmios"
+                            iconName="percent"
+                            color="tertiary"
+                            value={`${data?.resgates_produtos?.total}`}
+                            extra={`+${data?.resgates_produtos?.hoje} hoje`}
+                        />
+                    </Col>
+                    <Col lg={3} md={6} sm={6} xs={6}>
+                        <StatisticCard
+                            title="Resg. cupons"
+                            iconName="tags"
+                            color="primary"
+                            value={`${data?.resgates_vouchers?.total}`}
+                            extra={`+${data?.resgates_vouchers?.hoje} hoje`}
+                        />
+                    </Col>
+                </Row>
+            </div>
             {/* CONTEUDO PRINCIPAL */}
             <Card className="mb-3">
                 <CardHeader>

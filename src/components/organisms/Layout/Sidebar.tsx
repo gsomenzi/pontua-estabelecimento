@@ -28,7 +28,9 @@ export default function Sidebar() {
                 </div>
                 {userData && userData.id ? (
                     <div className="main-sidebar-menu-item user-data d-flex align-items-center">
-                        <Avatar userData={userData} />
+                        <div>
+                            <Avatar userData={userData} />
+                        </div>
                         <div className="user-title">
                             <h5 className="mb-0">{userData.nome.split(' ')[0]}</h5>
                             <span className="text-nowrap">{userData.email}</span>
@@ -39,18 +41,18 @@ export default function Sidebar() {
                     <i className="bi-bar-chart sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Dashboard</span>
                 </Link>
-                <Link activeClassName="active" to="/categorias" className="main-sidebar-menu-item">
+                {/* <Link activeClassName="active" to="/categorias" className="main-sidebar-menu-item">
                     <i className="bi-bookmark sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Categorias</span>
                 </Link>
                 <Link activeClassName="active" to="/estabelecimentos" className="main-sidebar-menu-item">
                     <i className="bi-shop sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Estabelecimentos</span>
-                </Link>
-                <Link activeClassName="active" to="/admins" className="main-sidebar-menu-item">
+                </Link> */}
+                {/* <Link activeClassName="active" to="/admins" className="main-sidebar-menu-item">
                     <i className="bi-shield sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Administradores</span>
-                </Link>
+                </Link> */}
                 <Link activeClassName="active" to="/usuarios" className="main-sidebar-menu-item">
                     <i className="bi-person sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Usuários</span>

@@ -9,11 +9,11 @@ type SignInPayload = {
 export default class AuthService {
     static async signIn(email: string, password: string): Promise<any> {
         const payload: SignInPayload = { email, password };
-        const res = await httpClient.post('/admin/auth/login', payload);
+        const res = await httpClient.post('/estabelecimento/auth/login', payload);
         return res;
     }
     static async getCurrentUser(): Promise<any> {
-        const res = await httpClient.get('/admin/auth/me');
+        const res = await httpClient.get('/estabelecimento/auth/me');
         return res;
     }
     static saveLocalToken(token: string) {

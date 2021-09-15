@@ -10,6 +10,7 @@ export default function Login() {
         <BackgroundImage src="/assets/imgs/bg-login.png">
             <PageContainer centered padded>
                 <img className="mb-4" src="/assets/imgs/logo-cor.png" />
+                <h3>Painel do estabelecimento</h3>
                 <Card className="shadow rounded bg-body">
                     <CardBody>
                         <FormLogin />

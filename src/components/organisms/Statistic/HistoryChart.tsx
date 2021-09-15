@@ -8,13 +8,13 @@ type Props = {
 export default function HistoryChart(props: Props) {
     const [users, setUsers] = useState([0]);
     const [points, setPoints] = useState([0]);
-    const [establishments, setStablishments] = useState([0]);
+    const [withdrawls, setWithdrawls] = useState([0]);
     const [labels, setLabels] = useState(['']);
     const { data } = props;
 
     useEffect(() => {
         setLabels(data ? data.historicoMensal.map((e) => e.data) : []);
-        setStablishments(data ? data.historicoMensal.map((e) => e.estabelecimentos) : []);
+        setWithdrawls(data ? data.historicoMensal.map((e) => e.resgates_produtos) : []);
         setPoints(data ? data.historicoMensal.map((e) => e.pontos) : []);
         setUsers(data ? data.historicoMensal.map((e) => e.usuarios) : []);
     }, [data]);
@@ -66,7 +66,7 @@ export default function HistoryChart(props: Props) {
                 },
             },
             {
-                seriesName: 'Estabelecimentos',
+                seriesName: 'Resgates de prêmios',
                 opposite: true,
                 axisTicks: {
                     show: true,
@@ -81,7 +81,7 @@ export default function HistoryChart(props: Props) {
                     },
                 },
                 title: {
-                    text: 'Estabelecimentos cadastrados',
+                    text: 'Resgates de prêmios',
                     style: {
                         color: '#ff4136',
                     },
@@ -122,9 +122,9 @@ export default function HistoryChart(props: Props) {
     };
     const series: any[] = [
         {
-            name: 'Estabelecimentos',
+            name: 'Resgates de prêmios',
             type: 'column',
-            data: establishments,
+            data: withdrawls,
         },
         {
             name: 'Usuários',
