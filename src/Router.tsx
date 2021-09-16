@@ -8,6 +8,7 @@ import { getLocalAccessToken, getLocalUserData } from './store/slices/auth';
 
 import Login from './views/auth/Login';
 import Home from './views/Home';
+import Admins from './views/Admins/List';
 import Users from './views/Users/List';
 import UserDetails from './views/Users/Details';
 
@@ -36,12 +37,12 @@ export default function Router() {
                             <Route exact path="/" component={Home} />
                             <Route exact path="/usuarios" component={Users} />
                             <Route path="/usuarios/:id" component={UserDetails} />
+                            <Route exact path="/admins" component={Admins} />
                             {/* <Route exact path="/categorias" component={Categories} />
                             <Route exact path="/estabelecimentos" component={Establishments} />
                             <Route path="/estabelecimentos/:id" component={EstablishmentDetails} />
                             <Route path="/produtos/:id" component={ProductDetails} />
-                            <Route path="/promocoes/:id" component={SaleDetails} />
-                            <Route exact path="/admins" component={Admins} /> */}
+                            <Route path="/promocoes/:id" component={SaleDetails} />*/}
                         </Switch>
                     </>
                 ) : (

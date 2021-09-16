@@ -49,13 +49,13 @@ export default function Sidebar() {
                     <i className="bi-shop sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Estabelecimentos</span>
                 </Link> */}
-                {/* <Link activeClassName="active" to="/admins" className="main-sidebar-menu-item">
+                <Link activeClassName="active" to="/admins" className="main-sidebar-menu-item">
                     <i className="bi-shield sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Administradores</span>
-                </Link> */}
+                </Link>
                 <Link activeClassName="active" to="/usuarios" className="main-sidebar-menu-item">
                     <i className="bi-person sidebar-menu-item-icon"></i>
-                    <span className="sidebar-menu-item-text">Usuários</span>
+                    <span className="sidebar-menu-item-text">Clientes</span>
                 </Link>
                 <a href="/" onClick={handleSignOut} className="main-sidebar-menu-item">
                     <i className="bi-box-arrow-left sidebar-menu-item-icon"></i>
