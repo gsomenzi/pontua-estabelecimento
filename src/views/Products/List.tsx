@@ -161,8 +161,12 @@ export default function Products() {
                         <td className="compact">{item.pontos || '0'}</td>
                         <td className="compact">
                             <ButtonGroup size="sm">
-                                <Button onClick={(ev) => openEdit(item)} size="sm" color="primary">
-                                    {updating && selected && selected.id === item.id ? <Spinner size="sm" /> : 'Editar'}
+                                <Button tag={Link} to={`/premios/${item.id}`} size="sm" color="primary">
+                                    {updating && selected && selected.id === item.id ? (
+                                        <Spinner size="sm" />
+                                    ) : (
+                                        'Detalhes'
+                                    )}
                                 </Button>
                                 <ButtonDropdown
                                     isOpen={openActionDropdown === item.id}
@@ -176,6 +180,7 @@ export default function Products() {
                                         )}
                                     </DropdownToggle>
                                     <DropdownMenu>
+                                        <DropdownItem onClick={() => openEdit(item)}>Editar</DropdownItem>
                                         <DropdownItem onClick={(ev) => handleRemove(ev, item)}>Remover</DropdownItem>
                                     </DropdownMenu>
                                 </ButtonDropdown>
