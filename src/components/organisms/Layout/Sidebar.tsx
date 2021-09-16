@@ -49,6 +49,10 @@ export default function Sidebar() {
                     <i className="bi-archive sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Prêmios</span>
                 </Link>
+                <Link activeClassName="active" to="/promocoes" className="main-sidebar-menu-item">
+                    <i className="bi-tag sidebar-menu-item-icon"></i>
+                    <span className="sidebar-menu-item-text">Promoções</span>
+                </Link>
                 <Link activeClassName="active" to="/admins" className="main-sidebar-menu-item">
                     <i className="bi-shield sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Administradores</span>

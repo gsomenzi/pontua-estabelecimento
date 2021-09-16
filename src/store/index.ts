@@ -5,6 +5,8 @@ import admin from './slices/admin';
 import auth from './slices/auth';
 import product from './slices/product';
 import productImage from './slices/productImage';
+import sale from './slices/sale';
+import saleImage from './slices/saleImage';
 import statistic from './slices/statistic';
 import user from './slices/user';
 
@@ -18,6 +20,8 @@ const store = configureStore({
         auth,
         product,
         productImage,
+        sale,
+        saleImage,
         statistic,
         user,
     },

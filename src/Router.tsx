@@ -13,6 +13,7 @@ import Users from './views/Users/List';
 import UserDetails from './views/Users/Details';
 import Products from './views/Products/List';
 import ProductDetails from './views/Products/Details';
+import Sales from './views/Sales/List';
 
 export default function Router() {
     const [ready, setReady] = useState(false);
@@ -42,10 +43,10 @@ export default function Router() {
                             <Route exact path="/admins" component={Admins} />
                             <Route exact path="/premios" component={Products} />
                             <Route path="/premios/:id" component={ProductDetails} />
-                            {/* <Route exact path="/categorias" component={Categories} />
+                            <Route path="/promocoes" component={Sales} />
+                            {/*
                             <Route exact path="/estabelecimentos" component={Establishments} />
-                            <Route path="/estabelecimentos/:id" component={EstablishmentDetails} />
-                            <Route path="/promocoes/:id" component={SaleDetails} />*/}
+                            */}
                         </Switch>
                     </>
                 ) : (
