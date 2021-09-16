@@ -8,45 +8,33 @@ import PageContainer from '../../components/atoms/PageContainer';
 import Drawer from '../../components/molecules/Drawer';
 import PageHeader from '../../components/molecules/PageHeader';
 import { RootState } from '../../store';
-import { getOne, update } from '../../store/slices/product';
-import { getByProduct } from '../../store/slices/statistic';
-import ProductsForm from '../../components/organisms/Products/Form';
-import { TabInfos } from '../../components/organisms/Products/TabInfos';
-import TabImages from '../../components/organisms/Products/TabImages';
-import { TabDashboard } from '../../components/organisms/Products/TabDashboard';
+import { getOne, update } from '../../store/slices/sale';
+import SalesForm from '../../components/organisms/Sales/Form';
+import TabInfos from '../../components/organisms/Sales/TabInfos';
+import TabImages from '../../components/organisms/Sales/TabImages';
 
 type Props = {
     match: any;
 };
 
-export default function ProductDetails(props: Props) {
+export default function SaleDetails(props: Props) {
     const { match } = props;
     const { params } = match;
     const dispatch = useDispatch();
-    const { getting, updating, item, error } = useSelector((state: RootState) => state.product);
+    const { getting, updating, item, error } = useSelector((state: RootState) => state.sale);
     const [openDrawer, setOpenDrawer] = useState(false);
     const [activeTab, setActiveTab] = useState(0);
     /**
      * Breadcrumbs no topo da página
      */
-    const [breadCrumbItems, setBreadCrumbItems] = useState<any>([{ title: 'Prêmios', link: '/premios' }]);
-    const {
-        loading: loadingStatistics,
-        productData,
-        error: errorStatistic,
-    } = useSelector((state: RootState) => state.statistic);
+    const [breadCrumbItems, setBreadCrumbItems] = useState<any>([{ title: 'Promoções', link: '/promocoes' }]);
 
     useEffect(() => {
         if (params.id) {
             dispatch(getOne(params.id));
-            dispatch(getByProduct(params.id));
             setBreadCrumbItems([...breadCrumbItems].concat([{ title: params.id }]));
         }
     }, [dispatch, params]);
-
-    useEffect(() => {
-        console.log('productData', productData);
-    }, [productData]);
 
     /**
      * Abre o drawer para edição
@@ -64,13 +52,13 @@ export default function ProductDetails(props: Props) {
             <BreadCrumbs items={breadCrumbItems} />
             <PageHeader
                 searchable={false}
-                title="Detalhes do prêmio"
+                title="Detalhes da promoção"
                 loading={getting}
                 actions={[
                     <Button onClick={() => setOpenDrawer(true)} color="primary" key="edit">
                         Editar
                     </Button>,
-                    <Button tag={Link} to="/premios" key="back">
+                    <Button tag={Link} to="/promocoes" key="back">
                         Voltar
                     </Button>,
                 ]}
@@ -81,16 +69,11 @@ export default function ProductDetails(props: Props) {
                     <Nav tabs>
                         <NavItem>
                             <NavLink className={`${activeTab === 0 ? 'active' : ''}`} onClick={() => setActiveTab(0)}>
-                                Dashboard
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink className={`${activeTab === 1 ? 'active' : ''}`} onClick={() => setActiveTab(1)}>
                                 Dados
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className={`${activeTab === 2 ? 'active' : ''}`} onClick={() => setActiveTab(2)}>
+                            <NavLink className={`${activeTab === 1 ? 'active' : ''}`} onClick={() => setActiveTab(1)}>
                                 Imagens
                             </NavLink>
                         </NavItem>
@@ -100,13 +83,10 @@ export default function ProductDetails(props: Props) {
                         {item ? (
                             <TabContent activeTab={activeTab}>
                                 <TabPane tabId={0}>
-                                    <TabDashboard data={productData} />
+                                    <TabInfos sale={item} />
                                 </TabPane>
                                 <TabPane tabId={1}>
-                                    <TabInfos product={item} />
-                                </TabPane>
-                                <TabPane tabId={2}>
-                                    <TabImages product={item} />
+                                    <TabImages sale={item} />
                                 </TabPane>
                             </TabContent>
                         ) : null}
@@ -114,7 +94,7 @@ export default function ProductDetails(props: Props) {
                 </div>
             </div>
             <Drawer open={openDrawer} setOpen={setOpenDrawer} title="Editar produto">
-                <ProductsForm loading={updating} product={item || undefined} onSubmit={submit} />
+                <SalesForm loading={updating} sale={item || undefined} onSubmit={submit} />
             </Drawer>
         </PageContainer>
     );

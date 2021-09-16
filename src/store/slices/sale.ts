@@ -4,7 +4,7 @@ import { parseTrustedFields } from '../../tools';
 import AppErrorHandler from '../../plugins/AppErrorHandler';
 
 const CREATE_FIELDS = ['nome', 'descricao', 'inicio_validade', 'final_validade', 'ativo', 'estabelecimentos_id'];
-const UPDATE_FIELDS = ['nome', 'descricao', 'inicio_validade', 'final_validade', 'estabelecimentos_id'];
+const UPDATE_FIELDS = ['nome', 'descricao', 'inicio_validade', 'final_validade', 'ativo', 'estabelecimentos_id'];
 
 type SaleState = {
     items: any[];
@@ -43,9 +43,7 @@ const initialState: SaleState = {
 export const getAll = createAsyncThunk('sale/getAll', async (payload: undefined, thunkAPI: any) => {
     try {
         const { pagination, order, filters } = thunkAPI.getState().product;
-        console.log(pagination, order, filters);
         const { data } = await SaleService.getAll(pagination.page, pagination.qty, order, filters);
-        console.log(data);
         return data;
     } catch (e) {
         return thunkAPI.rejectWithValue(e.response && e.response.data ? e.response.data : e);

@@ -14,6 +14,7 @@ import UserDetails from './views/Users/Details';
 import Products from './views/Products/List';
 import ProductDetails from './views/Products/Details';
 import Sales from './views/Sales/List';
+import SaleDetails from './views/Sales/Details';
 
 export default function Router() {
     const [ready, setReady] = useState(false);
@@ -43,7 +44,8 @@ export default function Router() {
                             <Route exact path="/admins" component={Admins} />
                             <Route exact path="/premios" component={Products} />
                             <Route path="/premios/:id" component={ProductDetails} />
-                            <Route path="/promocoes" component={Sales} />
+                            <Route exact path="/promocoes" component={Sales} />
+                            <Route path="/promocoes/:id" component={SaleDetails} />
                             {/*
                             <Route exact path="/estabelecimentos" component={Establishments} />
                             */}
