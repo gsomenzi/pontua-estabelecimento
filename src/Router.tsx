@@ -8,6 +8,7 @@ import { getLocalAccessToken, getLocalUserData } from './store/slices/auth';
 
 import Login from './views/auth/Login';
 import Home from './views/Home';
+import Point from './views/Point';
 import Admins from './views/Admins/List';
 import Users from './views/Users/List';
 import UserDetails from './views/Users/Details';
@@ -39,6 +40,7 @@ export default function Router() {
                         <Sidebar />
                         <Switch>
                             <Route exact path="/" component={Home} />
+                            <Route exact path="/pontuar" component={Point} />
                             <Route exact path="/usuarios" component={Users} />
                             <Route path="/usuarios/:id" component={UserDetails} />
                             <Route exact path="/admins" component={Admins} />

@@ -41,10 +41,10 @@ export default function Sidebar() {
                     <i className="bi-bar-chart sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Dashboard</span>
                 </Link>
-                {/* <Link activeClassName="active" to="/categorias" className="main-sidebar-menu-item">
-                    <i className="bi-bookmark sidebar-menu-item-icon"></i>
-                    <span className="sidebar-menu-item-text">Categorias</span>
-                </Link> */}
+                <Link activeClassName="active" exact to="/pontuar" className="main-sidebar-menu-item-secondary">
+                    <i className="bi-upc sidebar-menu-item-icon"></i>
+                    <span className="sidebar-menu-item-text">Pontuar</span>
+                </Link>
                 <Link activeClassName="active" to="/premios" className="main-sidebar-menu-item">
                     <i className="bi-archive sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Prêmios</span>
