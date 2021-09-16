@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 // SLICES
 import admin from './slices/admin';
 import auth from './slices/auth';
+import product from './slices/product';
 import statistic from './slices/statistic';
 import user from './slices/user';
 
@@ -14,6 +15,7 @@ const store = configureStore({
     reducer: {
         admin,
         auth,
+        product,
         statistic,
         user,
     },

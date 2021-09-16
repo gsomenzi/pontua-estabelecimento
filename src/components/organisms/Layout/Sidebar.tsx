@@ -44,11 +44,11 @@ export default function Sidebar() {
                 {/* <Link activeClassName="active" to="/categorias" className="main-sidebar-menu-item">
                     <i className="bi-bookmark sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Categorias</span>
-                </Link>
-                <Link activeClassName="active" to="/estabelecimentos" className="main-sidebar-menu-item">
-                    <i className="bi-shop sidebar-menu-item-icon"></i>
-                    <span className="sidebar-menu-item-text">Estabelecimentos</span>
                 </Link> */}
+                <Link activeClassName="active" to="/premios" className="main-sidebar-menu-item">
+                    <i className="bi-archive sidebar-menu-item-icon"></i>
+                    <span className="sidebar-menu-item-text">Prêmios</span>
+                </Link>
                 <Link activeClassName="active" to="/admins" className="main-sidebar-menu-item">
                     <i className="bi-shield sidebar-menu-item-icon"></i>
                     <span className="sidebar-menu-item-text">Administradores</span>
