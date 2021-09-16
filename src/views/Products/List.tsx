@@ -22,9 +22,10 @@ import PageContainer from '../../components/atoms/PageContainer';
 import Drawer from '../../components/molecules/Drawer';
 import PageHeader from '../../components/molecules/PageHeader';
 import { RootState } from '../../store';
-import { getAll, search, setPage, setOrder, remove } from '../../store/slices/product';
+import { getAll, search, setPage, setOrder, remove, clearErrors, update, create } from '../../store/slices/product';
 import ConfirmDialog from '../../components/molecules/ConfirmDialog';
 import Pagination from '../../components/organisms/Layout/Pagination';
+import ProductsForm from '../../components/organisms/Products/Form';
 
 /**
  * Breadcrumbs no topo da página
@@ -43,9 +44,8 @@ function ProductId(props: { product: any }) {
                     <img className="user-avatar" src={product.perfil.avatar} />
                 </div>
             ) : null}
-            <Link to={`/usuarios/${product.id}`}>
+            <Link to={`/premios/${product.id}`}>
                 <p className="mt-0 mb-0 font-weight-bold">{product.nome}</p>
-                {/* <p className="mt-0 mb-0">{user.email}</p> */}
             </Link>
         </div>
     );
@@ -61,9 +61,16 @@ export default function Products() {
     const [selected, setSelected] = useState({ id: 0 });
     const [openActionDropdown, setOpenActionDropdown] = useState();
     const dispatch = useDispatch();
-    const { getting, removing, items, error, pagination, order, filters, updating } = useSelector(
+    const { creating, getting, removing, items, error, pagination, order, filters, updating } = useSelector(
         (state: RootState) => state.product
     );
+
+    /**
+     * Fecha o drawer sempre que recebe os itens da tabela
+     */
+    useEffect(() => {
+        setOpenDrawer(false);
+    }, [items]);
 
     /**
      * Busca todos os usuários ao montar a página
@@ -97,11 +104,20 @@ export default function Products() {
     }
 
     /**
+     * Desmarca item selecionado e abre o drawer
+     */
+    async function openAdd() {
+        dispatch(clearErrors());
+        await setSelected({ id: 0 });
+        setOpenDrawer(true);
+    }
+
+    /**
      * Seleciona um admin e abre o drawer para edição
      * @param item Produto a ser selecionado
      */
     async function openEdit(item: any) {
-        // dispatch(clearErrors());
+        dispatch(clearErrors());
         await setSelected(item);
         setOpenDrawer(true);
     }
@@ -115,6 +131,14 @@ export default function Products() {
         e.preventDefault();
         setSelected(item);
         setShowRemoveModal(true);
+    }
+
+    function submit(values: any) {
+        if (selected && selected.id) {
+            dispatch(update({ ...values, id: selected.id }));
+        } else {
+            dispatch(create(values));
+        }
     }
 
     /**
@@ -179,6 +203,11 @@ export default function Products() {
                 handleSort={handleSort}
                 hasFilter
                 onFilterPress={() => setShowFilters(!showFilters)}
+                actions={[
+                    <Button key="add" onClick={openAdd}>
+                        Adicionar
+                    </Button>,
+                ]}
             />
             {/* FILTROS */}
             {showFilters ? (
@@ -212,7 +241,13 @@ export default function Products() {
                 <tbody>{renderItems()}</tbody>
             </Table>
             <Pagination data={pagination} onNavigate={(page: number) => dispatch(setPage(page))} />
-            <Drawer open={openDrawer} setOpen={setOpenDrawer} title="Editar prêmio"></Drawer>
+            <Drawer open={openDrawer} setOpen={setOpenDrawer} title="Editar prêmio">
+                <ProductsForm
+                    loading={creating || updating}
+                    product={selected ? selected : undefined}
+                    onSubmit={submit}
+                />
+            </Drawer>
             <ConfirmDialog
                 title="Remover o item?"
                 text="Você tem certeza que deseja remover este item?"

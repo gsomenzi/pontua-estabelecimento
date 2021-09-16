@@ -49,9 +49,9 @@ const initialState: ProductState = {
     filters: null,
 };
 
-export const getAll = createAsyncThunk('user/getAll', async (payload: undefined, thunkAPI: any) => {
+export const getAll = createAsyncThunk('product/getAll', async (payload: undefined, thunkAPI: any) => {
     try {
-        const { pagination, order, filters } = thunkAPI.getState().user;
+        const { pagination, order, filters } = thunkAPI.getState().product;
         console.log(pagination, order, filters);
         const { data } = await ProductService.getAll(pagination.page, pagination.qty, order, filters);
         console.log(data);
