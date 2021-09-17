@@ -42,7 +42,7 @@ const initialState: SaleState = {
 
 export const getAll = createAsyncThunk('sale/getAll', async (payload: undefined, thunkAPI: any) => {
     try {
-        const { pagination, order, filters } = thunkAPI.getState().product;
+        const { pagination, order, filters } = thunkAPI.getState().sale;
         const { data } = await SaleService.getAll(pagination.page, pagination.qty, order, filters);
         return data;
     } catch (e) {

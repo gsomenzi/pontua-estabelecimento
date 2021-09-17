@@ -7,6 +7,7 @@ import product from './slices/product';
 import productImage from './slices/productImage';
 import sale from './slices/sale';
 import saleImage from './slices/saleImage';
+import score from './slices/score';
 import statistic from './slices/statistic';
 import user from './slices/user';
 
@@ -22,6 +23,7 @@ const store = configureStore({
         productImage,
         sale,
         saleImage,
+        score,
         statistic,
         user,
     },
