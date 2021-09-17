@@ -57,7 +57,11 @@ function UserId(props: { user: any }) {
                 <div className="mr-2">
                     <img className="user-avatar" src={user.perfil.avatar} />
                 </div>
-            ) : null}
+            ) : (
+                <div className="mr-2">
+                    <img className="user-avatar" src="assets/imgs/user_placeholder.png" />
+                </div>
+            )}
             <Link to={`/usuarios/${user.id}`}>
                 <p className="mt-0 mb-0 font-weight-bold">
                     {user.nome}

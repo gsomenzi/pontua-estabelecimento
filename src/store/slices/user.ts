@@ -74,6 +74,15 @@ export const getOne = createAsyncThunk('user/getOne', async (id: number | string
     }
 });
 
+export const getByCode = createAsyncThunk('user/getByCode', async (code: number | string, thunkAPI: any) => {
+    try {
+        const { data } = await UserService.getByCode(code);
+        return data;
+    } catch (e) {
+        return thunkAPI.rejectWithValue(e.response && e.response.data ? e.response.data : e);
+    }
+});
+
 export const remove = createAsyncThunk('user/remove', async (id: string | number, thunkAPI: any) => {
     try {
         const res = await UserService.remove(id);
@@ -98,6 +107,9 @@ export const slice = createSlice({
         },
         setFilters: (state, action) => {
             state.filters = action.payload;
+        },
+        resetUser: (state) => {
+            state.item = null;
         },
     },
     extraReducers: (builder) => {
@@ -149,6 +161,21 @@ export const slice = createSlice({
                 state.getting = false;
                 state.error = action.payload.error;
             })
+            // GETBYCODE
+            .addCase(getByCode.pending, (state) => {
+                state.item = null;
+                state.getting = true;
+                state.error = null;
+            })
+            .addCase(getByCode.fulfilled, (state, action: PayloadAction<any>) => {
+                state.getting = false;
+                const { data } = action.payload;
+                state.item = data && !Array.isArray(data) && data.id ? data : null;
+            })
+            .addCase(getByCode.rejected, (state, action: PayloadAction<any>) => {
+                state.getting = false;
+                state.error = action.payload.error;
+            })
             // REMOVE
             .addCase(remove.pending, (state) => {
                 state.removing = true;
@@ -165,6 +192,6 @@ export const slice = createSlice({
     },
 });
 
-export const { setPage, setQty, setOrder, setFilters } = slice.actions;
+export const { setPage, setQty, setOrder, setFilters, resetUser } = slice.actions;
 
 export default slice.reducer;
