@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Card, CardBody, Form, FormFeedback, FormGroup, Input, Label, Spinner, Tooltip } from 'reactstrap';
+import { Button, Card, CardBody, Form, FormFeedback, FormGroup, Input, Label, Spinner } from 'reactstrap';
 import BreadCrumbs from '../components/atoms/BreadCrumbs';
 import PageContainer from '../components/atoms/PageContainer';
 import VerticalSteps from '../components/molecules/VerticalSteps';
@@ -25,7 +25,7 @@ export default function Score() {
     const [activeStep, setActiveStep] = useState(0);
     const [userCode, setUserCode] = useState('');
     const { item: user, getting } = useSelector((state: RootState) => state.user);
-    const { item: score } = useSelector((state: RootState) => state.score);
+    const { item: score, creating } = useSelector((state: RootState) => state.score);
 
     const formik = useFormik({
         initialValues: {
@@ -181,11 +181,11 @@ export default function Score() {
                                     <Button
                                         className="ml-1"
                                         type="submit"
-                                        disabled={!formik.isValid}
+                                        disabled={!formik.isValid || creating}
                                         onClick={(e: any) => handleSubmit(e)}
                                         color="secondary"
                                     >
-                                        Pontuar
+                                        {creating ? <Spinner size="sm" /> : <span>Pontuar</span>}
                                     </Button>
                                 </Form>
                             </VerticalSteps.Step>
